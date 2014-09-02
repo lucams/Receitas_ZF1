@@ -4,6 +4,7 @@ class Application_Model_Ingrediente {
 	private $nome;
 	private $unidadeMedida;
 	private $descricao;
+	private $situacao;
 	
 	public function __construct(array $options = null) {
 		if (is_array ( $options )) {
@@ -24,4 +25,9 @@ class Application_Model_Ingrediente {
 			$this->__set ( $key, $value );
 		}
 	}
+	
+	public function toArray(){
+	    return get_object_vars($this);
+	}
+	
 }
