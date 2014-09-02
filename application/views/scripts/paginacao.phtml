@@ -1,0 +1,53 @@
+<?php if ($this->pageCount): ?>
+    <div class="pagination pagination-centered"> 
+        <ul>
+            <!-- First page link -->
+            <?php if (isset($this->previous)): ?>
+                <li>    <a href="<?php echo $this->url(array('p' => $this->first)); ?>" class='active'>
+                       <i class="icon-fast-backward"></i>
+                    </a></li>
+            <?php else: ?>
+                    <li>  <span class="disabled"><i class="icon-fast-backward"></i></span> </li>
+            <?php endif; ?>
+
+            <!-- Previous page link -->
+            <?php if (isset($this->previous)): ?>
+                <li>  <a href="<?php echo $this->url(array('p' => $this->previous)); ?>" class='active'>
+                       <i class="icon-backward"></i>
+                    </a> </li>
+            <?php else: ?>
+                    <li>  <span class="disabled"><i class="icon-backward"></i></span> </li>
+            <?php endif; ?>
+
+
+            <!-- Links numerados -->
+            <?php foreach ($this->pagesInRange as $page): ?>
+                <?php if ($page != $this->current): ?>
+                    <li>      <a title="<?php echo $page; ?>" href="<?php echo $this->url(array('p' => $page)); ?>" class='active'><?php echo $page; ?></a></li>
+                <?php else: ?>
+                    <li>    <a class="current" title="<?php echo $page; ?>" href="<?php echo $this->url(array('p' => $page)); ?>" class='active'><?php echo $page; ?></a></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+
+
+            <!-- Next page link -->
+            <?php if (isset($this->next)): ?>
+                <li>  <a href="<?php echo $this->url(array('p' => $this->next)); ?>">
+                       <i class="icon-forward"></i>
+                    </a></li>
+            <?php else: ?>
+                <li>  <span class="disabled"><i class="icon-forward"></i></span> </li>
+            <?php endif; ?>
+
+            <!-- Last page link -->
+            <?php if (isset($this->next)): ?>
+                <li>     <a href="<?php echo $this->url(array('p' => $this->last)); ?>">
+                      <i class="icon-fast-forward"></i>
+                    </a></li>
+            <?php else: ?>
+                <li>   <span class="disabled"><i class="icon-fast-forward"></i></span></li>
+                <?php endif; ?>
+        </ul>
+    </div>
+<?php endif; ?>

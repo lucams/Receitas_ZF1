@@ -1,0 +1,39 @@
+<table class="table table-striped">
+	<caption>
+		<h4><?php echo $this->titulo ?></h4>
+	</caption>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Nome</th>
+			<th>Rendimento</th>
+			<th colspan="3">Ações</th>
+		</tr>
+	</thead>
+	<tbody>  
+        <?php foreach ($this->registros as $obj) { ?> 
+            <tr>
+			<td><?php echo $obj->__get('id'); ?></td>
+			<td><?php echo $obj->__get('nome'); ?> </td>
+			<td><?php echo $obj->__get('rendimento'); ?></td>
+			<td><a href="/receita/editar/id/<?php echo $obj->__get('id');?>"><i
+					class="icon-edit"></i></a></td>
+			<td><a href="/receita/excluir/id/<?php echo $obj->__get('id'); ?>"
+				onclick="return confirm('Você deseja excluir?')"><i
+					class="icon-trash"></i></a></td>
+			<td><a href="/receita/visualizar/id/<?php echo $obj->__get('id'); ?>"><i
+					class="icon-zoom-in"></i></a></td>
+		</tr>  
+        <?php } ?>
+        <tr>
+			<td colspan="6"><input type="button" class="btn-success" value="Novo"
+				onclick="window.location='/receita/inserir'" /></td>
+
+		</tr>
+		<tr>
+			<td colspan="6">
+             <?php echo $this->paginationControl($this->registros, 'Sliding', 'paginacao.phtml'); ?>
+            </td>
+		</tr>
+	</tbody>
+</table>
